@@ -14,7 +14,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: todo-app
+        working-directory: infra
 
     environment:
       name: production
