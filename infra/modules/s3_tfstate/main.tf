@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "todo-app-terraform-state" {
-  bucket = "todo-app-tf-state"
+  bucket = "todo-app-jg-tf-state"
 
     tags = {
         Name        = "todo-app-tf-state"

@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ecr","Source":"./modules/ecr","Dir":""}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"dynamodb-lock-table-todo-app","Source":"./modules/dynamodb-lock-table-todo-app","Dir":"modules/dynamodb-lock-table-todo-app"},{"Key":"ecr","Source":"./modules/ecr","Dir":"modules/ecr"},{"Key":"ecs","Source":"./modules/ecs","Dir":"modules/ecs"},{"Key":"s3_tfstate","Source":"./modules/s3_tfstate","Dir":"modules/s3_tfstate"}]}
