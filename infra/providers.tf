@@ -12,7 +12,7 @@ terraform {
 provider "aws" {
   region = "eu-central-1"
 }
-
+/* 
 terraform {
   backend "s3" {
     bucket         = "todo-app-tf-state"   # Change to your actual S3 bucket name
@@ -21,4 +21,4 @@ terraform {
     dynamodb_table = "terraform-lock-table-todo-app"
     encrypt        = true
   }
-}
+} */
