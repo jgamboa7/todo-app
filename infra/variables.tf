@@ -7,5 +7,5 @@ variable "subnet_id" {
 }
 
 variable "security_group_id" {
-  default = "sg-0c516ff389d2edcb2"
+  default = "sg-0775b9f0052471ac3"
 }

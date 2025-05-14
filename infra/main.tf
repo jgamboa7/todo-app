@@ -8,3 +8,11 @@ module "ecs" {
   subnet_id         = var.subnet_id
   security_group_id = var.security_group_id
 }
+
+module "s3_tfState" {
+  source            = "./modules/s3_tfState"
+}
+
+module "dynamodb-lock-table-todo-app" {
+  source            = "./modules/dynamodb-lock-table-todo-app"
+}
