@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'todo-app/infra/**'   
+      - 'infra/**'   
 
 jobs:
   terraform-apply:
