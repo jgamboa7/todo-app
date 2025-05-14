@@ -9,8 +9,8 @@ module "ecs" {
   security_group_id = var.security_group_id
 }
 
-module "s3_tfState" {
-  source            = "./modules/s3_tfState"
+module "s3_tfstate" {
+  source            = "./modules/s3_tfstate"
 }
 
 module "dynamodb-lock-table-todo-app" {
