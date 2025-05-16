@@ -41,11 +41,15 @@ resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.todo-app-alb.arn
   port              = 80
   protocol          = "HTTP"
-  ssl_policy        = "ELBSecurityPolicy-2016-08"  # AWS default
 
   default_action {
-    type             = "forward"
-    target_group_arn = aws_lb_target_group.todo_app_tg.arn
+    type             = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
   }
 }
 
