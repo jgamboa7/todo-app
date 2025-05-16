@@ -26,7 +26,7 @@ const gracefulShutdown = () => {
         .catch(() => {})
         .then(() => process.exit());
 };
-
+//test
 process.on('SIGINT', gracefulShutdown);
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGUSR2', gracefulShutdown); // Sent by nodemon
