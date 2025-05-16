@@ -49,7 +49,7 @@ resource "aws_nat_gateway" "todo-app-natgw" {
   subnet_id     = aws_subnet.public["eu-central-1a"].id
 
   tags = {
-    Name = "NAT_gw_${each.key}"
+    Name = "NAT_gw"
   }
 }
 
@@ -67,7 +67,8 @@ resource "aws_route_table" "public" {
 }
 
 resource "aws_route_table_association" "public" {
-  subnet_id      = aws_subnet.public.id
+  for_each       = aws_subnet.public
+  subnet_id      = each.value.id
   route_table_id = aws_route_table.public.id
 }
 
