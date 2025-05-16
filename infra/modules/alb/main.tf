@@ -13,14 +13,19 @@ resource "aws_lb" "todo-app-alb" {
 resource "aws_lb_target_group" "todo_app_tg" {
   name        = "todo-app-tg"
   port        = 3000
-  protocol    = "HTTPS"
+  protocol    = "HTTP"
   target_type = "ip"  # or "ip" if using ECS or IP-based targets
   vpc_id      = var.vpc_id
 
   health_check {
     path                = "/"
-    protocol            = "HTTPS"
+    protocol            = "HTTP"
     port                = "3000"
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 5
+    interval            = 10
+    matcher             = "200-399"
   }
 }
 
