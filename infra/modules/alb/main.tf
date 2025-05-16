@@ -37,7 +37,7 @@ resource "aws_lb_listener" "https_listener" {
   }
 }
 
-resource "aws_lb_listener" "https_listener" {
+resource "aws_lb_listener" "http_listener" {
   load_balancer_arn = aws_lb.todo-app-alb.arn
   port              = 80
   protocol          = "HTTP"
