@@ -13,7 +13,7 @@ resource "aws_lb" "todo-app-alb" {
 resource "aws_lb_target_group" "todo_app_tg" {
   name        = "todo-app-tg"
   port        = 3000
-  protocol    = "TCP"
+  protocol    = "HTTPS"
   target_type = "ip"  # or "ip" if using ECS or IP-based targets
   vpc_id      = var.vpc_id
 
