@@ -11,7 +11,6 @@ resource "aws_security_group" "allow_alb_sg" {
 resource "aws_vpc_security_group_ingress_rule" "alb_to_ecs" {
   security_group_id                 = aws_security_group.allow_alb_sg.id
   referenced_security_group_id      = aws_security_group.alb_sg.id
-  cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
   /* from_port                         = 3000
