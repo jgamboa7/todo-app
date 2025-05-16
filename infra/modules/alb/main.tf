@@ -42,7 +42,6 @@ resource "aws_lb_listener" "http_listener" {
   port              = 80
   protocol          = "HTTP"
   ssl_policy        = "ELBSecurityPolicy-2016-08"  # AWS default
-  certificate_arn   = var.acm_certificate_arn      # You need a valid ACM cert here
 
   default_action {
     type             = "forward"
