@@ -40,9 +40,15 @@ resource "aws_ecs_service" "todo-app-service" {
   launch_type     = "FARGATE" 
 
   network_configuration {
-    subnets         = [var.subnet_id]
+    subnets         = [var.private_subnet_id]
     security_groups = [var.security_group_id]
-    assign_public_ip = true
+    assign_public_ip = false
+  }
+ 
+ load_balancer {
+    target_group_arn = var.todo_app_tg_arn
+    container_name   = "todo-app-cluster"
+    container_port   = 3000
   }
 }
 
