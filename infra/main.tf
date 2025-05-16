@@ -14,9 +14,9 @@ module "s3_tfstate" {
   source            = "./modules/s3_tfstate"
 }
 
-module "dynamodb-lock-table-todo-app" {
+/* module "dynamodb-lock-table-todo-app" {
   source            = "./modules/dynamodb-lock-table-todo-app"
-} 
+}  */
 
 module "vpc" {
   /* region  = var.aws_region */
