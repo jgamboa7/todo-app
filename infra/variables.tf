@@ -3,5 +3,5 @@ variable "todo-app-uri" {
 }
 
 variable "acm_certificate_arn" {
-  default = "arn:aws:acm:us-east-1:826589250962:certificate/4a0da464-4eb3-4da7-82fa-52e43fdbeb6f"
+  default = "arn:aws:acm:eu-central-1:826589250962:certificate/a3e72efd-b7eb-4322-9e3e-2662ea0b2706"
 }
