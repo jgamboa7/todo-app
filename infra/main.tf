@@ -8,6 +8,7 @@ module "ecs" {
   private_subnet_id         = module.vpc.private_subnet_id
   security_group_id         = module.sg.allow_alb_sg_id
   todo_app_tg_arn           = module.alb.todo_app_tg_arn  
+  alb_listener_arn          = module.alb.alb_listener_arn 
 }
 
 module "s3_tfstate" {

@@ -50,6 +50,8 @@ resource "aws_ecs_service" "todo-app-service" {
     container_name   = "todo-app-container"
     container_port   = 3000
   }
+
+  depends_on = [ var.alb_listener_arn ]
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
