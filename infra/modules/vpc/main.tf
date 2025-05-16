@@ -20,9 +20,10 @@ resource "aws_subnet" "private" {
 }
 
 resource "aws_subnet" "public" {
+  for_each                = toset(var.azs)
   vpc_id                  = aws_vpc.main.id
-  cidr_block              = "10.0.2.0/24"
-  availability_zone       = data.aws_availability_zones.available.names[1]
+  cidr_block              = cidrsubnet(aws_vpc.main.cidr_block, 8, local.az_subnet_index[each.key])
+  availability_zone       = each.key
   map_public_ip_on_launch = true
 
   tags = {
@@ -38,7 +39,13 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
+resource "aws_eip" "nat_eip" {
+  vpc = true
+}
+
+
 resource "aws_nat_gateway" "todo-app-natgw" {
+  allocation_id = aws_eip.nat_eip.id
   subnet_id     = aws_subnet.public.id
 
   tags = {

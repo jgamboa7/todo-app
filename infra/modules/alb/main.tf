@@ -3,7 +3,7 @@ resource "aws_lb" "todo-app-alb" {
   load_balancer_type = "application"
   ip_address_type    = "ipv4"
   security_groups    = [var.lb_sg_id]
-  subnets            = [var.public_subnet_id]
+  subnets            = var.public_subnet_id
  
     tags = {
     Environment = "production-todo-app"
