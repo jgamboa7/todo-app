@@ -2,23 +2,17 @@ name: dockerfile upload
 
 on:
   push:
-    branches:
+    branches: 
       - main
     paths:
       - 'front-end/**'
 
 jobs:
-  docker-image-upload:
+  deploy:
     name: upload docker image to ecr
     runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: front-end/
-
-    environment:
-      name: production   
-
+    environment: production
+    
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
@@ -29,12 +23,16 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: eu-central-1
-          
-    - name: "authenticate docker client"
-      run: aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 826589250962.dkr.ecr.eu-central-1.amazonaws.com       
 
-    - name: "create&push docker image"
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+
+    - name: Build, tag, and push docker image to Amazon ECR
+      env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: my-ecr-repo
+          IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t todo-app:1.0 .
-        docker tag todo-app:1.0 826589250962.dkr.ecr.eu-central-1.amazonaws.com/todo-app:1.0
-        docker push 826589250962.dkr.ecr.eu-central-1.amazonaws.com/todo-app:1.0
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG  
